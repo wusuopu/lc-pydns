@@ -1,0 +1,19 @@
+﻿========================
+lc-pydns README
+========================
+Version 1.0
+Author LongChangjin
+E-mail admin@longchangjin.cn
+
+
+About
+    dnspod的一个桌面客户端程序。具有域名管理、解析记录管理等功能。
+
+Dependencies
+    Python 2.x
+    PyGTK
+
+License
+    该程序基于GPL协议发布。
+
+    2012.02.28
