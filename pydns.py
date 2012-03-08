@@ -9,7 +9,7 @@
 # 本程序是免费软件，基于GPL许可发布。
 # 
 ##
-# @文件名(file): ui.py
+# @文件名(file): pydns.py
 # @作者(author): 龙昌锦(LongChangjin)
 # @博客(blog): http://www.xefan.com
 # @邮箱(mail): admin@xefan.com
@@ -19,6 +19,7 @@ from myDialog import *
 import api
 import thread
 import time
+import ui
 
 #build = gtk.Builder()
 
@@ -41,7 +42,8 @@ class Login:
         return back
     def __init__(self):
         self.__build = gtk.Builder()
-        self.__build.add_from_file("login.glade")
+        #self.__build.add_from_file("login.glade")
+        self.__build.add_from_string(ui.login)
         self.__build.connect_signals(self)
         self.window = self.__build.get_object("window_login")
         self.entry_mail = self.__build.get_object("entry_mail")
@@ -60,9 +62,9 @@ class Login:
             return
         self.__mail = self.entry_mail.get_text()
         self.__pswd = self.entry_pswd.get_text()
-        gtk.threads_enter()
-        self.window.set_sensitive(False)
-        time.sleep(1)
+        #gtk.threads_enter()
+        #self.window.set_sensitive(False)
+        #time.sleep(1)
         dns = api.UserDetail(self.__mail, self.__pswd)
         dns()
         if self.res_code(dns.code, dns.message) == True:
@@ -70,8 +72,8 @@ class Login:
             self.window.destroy()
             m.button_dfresh.clicked()
             m.main()
-        self.window.set_sensitive(True)
-        gtk.threads_leave()
+        #self.window.set_sensitive(True)
+        #gtk.threads_leave()
         
         
         
@@ -97,7 +99,8 @@ class Main:
         self.__mail = mail
         self.__pswd = pswd
         self.__build = gtk.Builder()
-        self.__build.add_from_file("ui.glade")
+        #self.__build.add_from_file("ui.glade")
+        self.__build.add_from_string(ui.ui)
         self.__build.connect_signals(self)
         self.window = self.__build.get_object("Mainwindow")
 
